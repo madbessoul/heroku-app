@@ -1,0 +1,3 @@
+<div *ngFor="let todo of todos | async">
+  <h2 [ngClass]="{'completed':todo.completed,'not-completed':!todo.completed}">{{todo.title}}</h2>
+</div>
