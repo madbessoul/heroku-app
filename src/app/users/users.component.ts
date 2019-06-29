@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators'
+import {refCount, shareReplay} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-users',
@@ -12,20 +12,11 @@ export class UsersComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   users: Observable<any>;
-  apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
+  usersUrl = 'https://jsonplaceholder.typicode.com/users';
 
 
   ngOnInit() {
-    this.users = this.http.get<any>(this.apiUrl)
-    // .pipe(
-    //   map(res => {
-    //     const result = [];
-    //     res.forEach(element => {
-    //       result.push(element.name);
-    //     });
-    //     return result;
-    //   })
-    // );
+    this.users = this.http.get<any>(this.usersUrl);
   }
-
 }
