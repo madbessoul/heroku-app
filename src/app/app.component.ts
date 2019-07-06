@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   title = 'heroku-app';
 
   ngOnInit()  {
-    this.http.get('https://heroku-rest-0.herokuapp.com/').subscribe(data => {
+    this.http.get('https://heroku-rest-0.herokuapp.com/greeting').subscribe(data => {
       console.log(data);
       this.message = data;
     }
