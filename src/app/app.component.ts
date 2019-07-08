@@ -19,11 +19,14 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  message$: Observable<Greeting>;
+  message: string;
   title = 'heroku-app';
 
   ngOnInit()  {
-    this.message$ = this.http.get<Greeting>('https://heroku-rest-0.herokuapp.com/greeting?name=Mad');
+    this.http.get<Greeting>('https://heroku-rest-0.herokuapp.com/greeting?name=Mad').subscribe(data => {
+      this.message = data.content
+    }
+    )
   }
 
 }
